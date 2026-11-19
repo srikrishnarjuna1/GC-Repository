@@ -21,8 +21,8 @@ pipeline {
                 echo 'Starting application build'
 
                 sh '''
-                    chmod +x app.sh
-                    bash -n app.sh
+                    chmod +x app.txt
+                    bash -n app.txt
                     echo "Build completed successfully"
                 '''
             }
@@ -33,8 +33,8 @@ pipeline {
                 echo 'Starting application testing'
 
                 sh '''
-                    grep -q "HELLO WORLD APPLICATION" app.sh
-                    grep -q "Welcome to Jenkins CI/CD Project" app.sh
+                    grep -q "HELLO WORLD APPLICATION" app.txt
+                    grep -q "Welcome to Jenkins CI/CD Project" app.txt
                     echo "All tests passed"
                 '''
             }
@@ -46,8 +46,8 @@ pipeline {
 
                 sh '''
                     mkdir -p deployment
-                    cp app.sh deployment/
-                    chmod +x deployment/app.sh
+                    cp app.txt deployment/
+                    chmod +x deployment/app.txt
 
                     echo "Deployment completed"
                 '''
@@ -59,7 +59,7 @@ pipeline {
                 echo 'Running deployed application'
 
                 sh '''
-                    ./deployment/app.sh
+                    ./deployment/app.txt
                 '''
             }
         }
